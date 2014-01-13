@@ -3,13 +3,21 @@
 # program generate the Fibonacci sequence to that number
 # or to the Nth number
 
-n = int(raw_input('How many numbers do you need? '))
-series = [1]
+import sys
 
-while len(series) < n:
-    if len(series) == 1:
-        series.append(1)
-    else:
-        series.append(series[-1] + series[-2])
+n = int(raw_input("Enter the Nth number: "))
 
-print series
+attempts = 0
+
+while n < 2:
+	n = int(raw_input("Enter a number greater than 2: "))
+	attempts = attempts + 1
+	if attempts > 3:
+		sys.exit(1)
+
+retval = [0,1]
+
+for x in range(2,n):
+	retval.append(retval[x-1] + retval[x-2])
+
+print retval
