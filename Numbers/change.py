@@ -3,37 +3,29 @@
 # out the change and the number of quarters, dimes, nickels,
 # pennies needed for the change.
 
-if __name__ == '__main__':
-    cost = input("What's the cost in dollars? ")
-    given = input("What's the amount of dollars given? ")
+import math
 
-    change = given - cost
+def change(cost, given, denominations):
+    #check if cost and given are floats
+    #check if given is less than or equal to cost
 
-    print "\n"
-    if change < 0:
-        print "Please ask for $%.2f more from the customer." % (-change) # double negation
-    else:
-        print "The change is $%.2f." % change
+    #returns a list of tuples where first value is denomiations and second qty
+    retval = []
+    remainder = given - cost
+    for key in sorted(denominations.keys(), reverse=True):
+        required_qty = remainder // key
+        right_qty = min(required_qty, denominations[key])
+        if right_qty > 0:
+            retval.append((key, right_qty))
+            remainder = remainder - (right_qty * key)
+        if remainder == 0:
+            break 
 
-        q = 0 # 0.25
-        d = 0 # 0.10
-        n = 0 # 0.05
-        p = 0 # 0.01
+    return retval, remainder
 
-        change = int(change * 100) # let's talk about cents
-        
-        if change >= 25:
-            q = int(change / 25)
-            change = change % 25
-        if change >= 10:
-            d = int(change / 10)
-            change = change % 10
-        if change >= 5:
-            n = int(change / 5)
-            change = change % 5
-        if change >= 1:
-            p = change # rest all change is in pennies
+cost = float("{:.2f}".format(float(raw_input("enter the cost: "))))
+given = float("{:.2f}".format(float(raw_input("enter the given: "))))
+denominations = {20 : 10, 10 : 10, 5 : 10, 1 : 10, .25 : 100, 
+                .05 : 100, .01 : 100}
 
-    print "Give the following change to the customer:"
-    print "Quarters: %d\tDimes: %d\tNickels: %d\tPennies: %d" \
-          % (q, d, n, p)
+print change(cost, given, denominations)

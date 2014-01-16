@@ -5,19 +5,17 @@
 
 import sys
 
-n = int(raw_input("Enter the Nth number: "))
+result = {}
 
-attempts = 0
+def fib(n):
+	retval = 0
+	if n in result: return result[n]
+	elif n <= 2:
+		retval = 1
+	else:
+		retval = fib(n-1) + fib(n-2)
+	result[n] = retval
+	return retval
 
-while n < 2:
-	n = int(raw_input("Enter a number greater than 2: "))
-	attempts = attempts + 1
-	if attempts > 3:
-		sys.exit(1)
+print fib(int(raw_input("Enter the Nth number: ")))
 
-retval = [0,1]
-
-for x in range(2,n):
-	retval.append(retval[x-1] + retval[x-2])
-
-print retval

@@ -2,22 +2,22 @@
 # and find all Prime Factors (if there are any) and
 # display them.
 
+import sys
 
-def is_a_prime(x):
-    for i in range(2, x):
-        if x % i == 0:
-            return False
-    return True
+n = int(raw_input("enter your number: "))
+result = set()
 
-# standard boilerplate
-if __name__ == '__main__':
-    n = int(raw_input('Enter the number to find prime factors of: '))
+#algorithm to find prime factors - start with 2 and if % is 0, work with the quotient
+if n < 2:
+    print "enter a number greater than 1"
+    sys.exit(1)
 
-    factors = []
+factor = 2
+while n > 1:
+    if n % factor == 0: 
+        result.add(factor)
+        while n % factor == 0:
+            n = n/factor
+    factor = factor + 1
 
-    for i in range(2, n + 1):
-        while n % i == 0: # Thanks @madsulrik
-            if is_a_prime(i):
-                factors.append(i)
-                n /= i
-    print factors
+print result

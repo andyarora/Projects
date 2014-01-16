@@ -1,7 +1,7 @@
 Numbers
 ---------
 
-**Find PI to the Nth Digit** - Enter a number and have the program generate PI up to that many decimal places. Keep a limit to how far the program will go.
+**Find PI to the Nth Digit** - Enter a number and have the program generate PI up to that many decimal places. Keep a limit to how far the program will go. 
 
 **Fibonacci Sequence** - Enter a number and have the program generate the Fibonacci sequence to that number or to the Nth number.
 
@@ -17,9 +17,9 @@ Numbers
 
 **Binary to Decimal and Back Converter** - Develop a converter to convert a decimal number to binary or a binary number to its decimal equivalent.
 
-**Calculator** - A simple calculator to do basic operators. Make it a scientific calculator for added complexity.
+TO-DO - **Calculator** - A simple calculator to do basic operators. Make it a scientific calculator for added complexity.
 
-**Unit Converter (temp, currency, volume, mass and more)** - Converts various units between one another. The user enters the type of unit being entered, the type of unit they want to convert to and then the value. The program will then make the conversion.
+TO-Do (simple program with bunch of mathematical formulas) - **Unit Converter (temp, currency, volume, mass and more)** - Converts various units between one another. The user enters the type of unit being entered, the type of unit they want to convert to and then the value. The program will then make the conversion.
 
 **Alarm Clock** - A simple clock where it plays a sound after X number of minutes/seconds or at a particular time.
 

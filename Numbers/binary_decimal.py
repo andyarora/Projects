@@ -4,47 +4,23 @@ Develop a converter to convert a decimal number to binary
 or a binary number to its decimal equivalent.
 """
 
-def binary_to_decimal(binary):
-    """
-    Converts a binary number into a decimal number.
-    """
-    decimal = 0
+def dec_to_bin(a):
+
+    retval = ""
+    while a > 0:
+        retval = retval + str(a%2) 
+        a = a / 2
+    retval = retval[::-1]
+    return retval
+
+def bin_to_dec(b):
+    retval = 0
     index = 0
-    while binary > 0:
-        last = binary % 10
-        binary = binary / 10
-        decimal += (last * (2 ** index))
+    for c in reversed(b):
+        retval = retval + int(c) * (2 ** index)
         index += 1
-    return decimal
+    return retval
 
-def decimal_to_binary(decimal):
-    """
-    Converts a decimal number into a binary number.
-    """
-    binary = ""
-    remainders = []
-    while decimal > 0:
-        remainders.append(str(decimal % 2))
-        decimal /= 2
-    remainders.reverse()
-    binary = "".join(remainders)
-    return 0 if binary == "" else binary
+print dec_to_bin(int(raw_input("dec to bin: ")))
+print bin_to_dec(raw_input("bin to dec: "))
 
-if __name__ == '__main__':
-    print """
-    1. Binary to Decimal
-    2. Decimal to Binary\n
-    """
-
-    choice = input("Make a choice: ")
-
-    if choice == 1:
-        binary = input("Binary to convert: ")
-        print "The binary number %d in decimal is %d" % \
-              (binary, binary_to_decimal(binary))
-    elif choice == 2:
-        decimal = input("Decimal to convert: ")
-        print "The decimal number %d in binary is %s" % \
-              (decimal, decimal_to_binary(decimal))
-    else:
-        print "Invalid choice"

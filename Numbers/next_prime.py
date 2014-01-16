@@ -2,24 +2,29 @@
 # numbers until the user chooses to stop asking for
 # the next one.
 
-def next_prime(current):
-    next_prime = current + 1 # start checking for primes 1 number after the current one
-    i = 2
-    while next_prime > i: # check with numbers up to next_prime - 1
-        if next_prime % i == 0: # if number is divisible
-            next_prime += 1 # ready to check the next number
-            i = 2 # reset i to check divisibility again from 2
-        else:
-            i += 1 # increment the divisor
-    return next_prime
+import sys
 
-if __name__ == '__main__':
+prime_numbers = [2]
+
+def getnextprime(current_prime):
+    x = current_prime
+    while True:
+        isprime = True
+        x = x + 1
+        for prime in prime_numbers:
+            if x % prime == 0:
+                isprime = False
+                break
+        if isprime:
+            prime_numbers.append(x)
+            return x
+
+if __name__ == "__main__":
     current_prime = 2
     while True:
-        response = raw_input('Do you want the next prime? (Y/N) ')
-
-        if response.lower().startswith('y'):
+        user_response = raw_input("Do you want next prime [Y/N]: ")
+        if user_response.lower().startswith('y'):
             print current_prime
-            current_prime = next_prime(current_prime)
+            current_prime = getnextprime(current_prime)
         else:
-            break
+            sys.exit(0)
